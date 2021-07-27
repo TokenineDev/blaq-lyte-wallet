@@ -124,6 +124,10 @@
         "
       />
     </v-dialog>
+
+    <!-- <v-btn fab color="#c71e2b" large style="position:fixed;right:10px;bottom:10px;">
+      <v-img :src="'/image/buyicon.png'" height="50px" width="50px" contain></v-img>
+    </v-btn> -->
   </div>
 </template>
 
