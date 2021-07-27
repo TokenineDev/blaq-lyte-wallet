@@ -166,7 +166,11 @@
                   v-model="form.CustomerId"
                 />
                 <input type="hidden" name="Amount" v-model="form.Amount" />
-                <input type="hidden" name="PhoneNumber" v-model="form.PhoneNumber" />
+                <input
+                  type="hidden"
+                  name="PhoneNumber"
+                  v-model="form.PhoneNumber"
+                />
                 <input
                   type="hidden"
                   name="Description"
@@ -249,6 +253,7 @@
 <script>
 import layout from "../../../components/layout.vue";
 import bottomNav from "../../../components/BottomNav.vue";
+import { paymentsCollection } from "../../../plugins/firebase";
 export default {
   name: "Payment",
   components: {
@@ -340,19 +345,30 @@ export default {
       this.form.CheckSum = await cryp.toString();
     },
     async pay() {
-      this.form.Amount = this.sum_price + "00";
-      this.form.Description = this.selected.address;
-      this.form.ProductImageUrl = this.selected.logoURI;
-      if (this.form.ChannelCode == "payplus_kbank") {
-        if (this.$refs.formKplus) {
+      this.app_loading(true);
+      try {
+        this.form.Amount = this.sum_price + "00";
+        this.form.Description = this.selected.address;
+        this.form.ProductImageUrl = this.selected.logoURI;
+        if (this.form.ChannelCode == "payplus_kbank") {
+          if (this.$refs.formKplus) {
+            await this.checkSumEncryp();
+            await this.saveToFB(this.form);
+            await this.$refs.paymentMobile.submit();
+          }
+        } else if (this.form.ChannelCode == "bank_qrcode") {
+          delete this.form.PhoneNumber;
           await this.checkSumEncryp();
-          await this.$refs.paymentMobile.submit();
+          await this.saveToFB(this.form);
+          await this.$refs.paymentQR.submit();
         }
-      } else if (this.form.ChannelCode == "bank_qrcode") {
-        delete this.form.PhoneNumber;
-        await this.checkSumEncryp();
-        await this.$refs.paymentQR.submit();
+      } catch (err) {
+        console.log(err);
+        this.app_loading(false);
       }
+    },
+    async saveToFB(form) {
+      await paymentsCollection.add(form);
     },
   },
 };

@@ -12,6 +12,7 @@ import "./assets/scss/main.scss";
 import { ethers, Signer } from "ethers";
 import abi from "./assets/static/abi.json";
 import VueCookies from "vue-cookies";
+import './registerServiceWorker'
 
 Vue.use(VueCookies);
 Vue.prototype.$axios = axios;
