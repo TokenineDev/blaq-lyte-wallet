@@ -80,7 +80,7 @@
             </div>
           </v-col>
           <v-col cols="12">
-            <v-expansion-panels>
+            <v-expansion-panels focusable v-model="panel">
               <v-expansion-panel @change="channelPayment('payplus_kbank')">
                 <v-expansion-panel-header>
                   <div class="d-flex align-center pr-3">
@@ -95,7 +95,7 @@
                   </div>
                 </v-expansion-panel-header>
                 <v-expansion-panel-content>
-                  <v-row no-gutters class="pa-3" justify="center">
+                  <v-row no-gutters class="px-3 pt-4" justify="center">
                     <v-form
                       ref="formKplus"
                       v-model="valid"
@@ -136,7 +136,7 @@
                   </div>
                 </v-expansion-panel-header>
                 <v-expansion-panel-content>
-                  <v-row no-gutters class="pa-3" justify="center">
+                  <v-row no-gutters class="px-3 pt-4" justify="center">
                     <v-btn
                       color="#c71e2b"
                       :disabled="sum_price < 20"
@@ -148,100 +148,6 @@
                 </v-expansion-panel-content>
               </v-expansion-panel>
             </v-expansion-panels>
-            <div>
-              <form
-                ref="paymentMobile"
-                method="POST"
-                action="https://sandbox-cdnv3.chillpay.co/Payment"
-              >
-                <input
-                  type="hidden"
-                  name="MerchantCode"
-                  v-model="form.MerchantCode"
-                />
-                <input type="hidden" name="OrderNo" v-model="form.OrderNo" />
-                <input
-                  type="hidden"
-                  name="CustomerId"
-                  v-model="form.CustomerId"
-                />
-                <input type="hidden" name="Amount" v-model="form.Amount" />
-                <input
-                  type="hidden"
-                  name="PhoneNumber"
-                  v-model="form.PhoneNumber"
-                />
-                <input
-                  type="hidden"
-                  name="Description"
-                  v-model="form.Description"
-                />
-                <input
-                  type="hidden"
-                  name="ChannelCode"
-                  v-model="form.ChannelCode"
-                />
-                <input type="hidden" name="Currency" v-model="form.Currency" />
-                <input type="hidden" name="LangCode" v-model="form.LangCode" />
-                <input type="hidden" name="RouteNo" v-model="form.RouteNo" />
-                <input
-                  type="hidden"
-                  name="IPAddress"
-                  v-model="form.IPAddress"
-                />
-                <input type="hidden" name="APIKey" v-model="form.ApiKey" />
-                <input
-                  name="ProductImageUrl"
-                  type="hidden"
-                  v-model="form.ProductImageUrl"
-                />
-                <input type="hidden" name="CheckSum" v-model="form.CheckSum" />
-              </form>
-
-              <form
-                ref="paymentQR"
-                method="POST"
-                action="https://sandbox-cdnv3.chillpay.co/Payment"
-              >
-                <input
-                  type="hidden"
-                  name="MerchantCode"
-                  v-model="form.MerchantCode"
-                />
-                <input type="hidden" name="OrderNo" v-model="form.OrderNo" />
-                <input
-                  type="hidden"
-                  name="CustomerId"
-                  v-model="form.CustomerId"
-                />
-                <input type="hidden" name="Amount" v-model="form.Amount" />
-                <input
-                  type="hidden"
-                  name="Description"
-                  v-model="form.Description"
-                />
-                <input
-                  type="hidden"
-                  name="ChannelCode"
-                  v-model="form.ChannelCode"
-                />
-                <input type="hidden" name="Currency" v-model="form.Currency" />
-                <input type="hidden" name="LangCode" v-model="form.LangCode" />
-                <input type="hidden" name="RouteNo" v-model="form.RouteNo" />
-                <input
-                  type="hidden"
-                  name="IPAddress"
-                  v-model="form.IPAddress"
-                />
-                <input type="hidden" name="APIKey" v-model="form.ApiKey" />
-                <input
-                  name="ProductImageUrl"
-                  type="hidden"
-                  v-model="form.ProductImageUrl"
-                />
-                <input type="hidden" name="CheckSum" v-model="form.CheckSum" />
-              </form>
-            </div>
           </v-col>
         </v-row>
       </v-col>
@@ -296,6 +202,7 @@ export default {
   },
   data() {
     return {
+      panel: null,
       phoneRules: [
         (v) => !!v || "กรุณากรอกเบอร์โทรศํพท์",
         (v) => (v && v.length <= 10) || "เบอร์โทรศัพท์ 10 หลัก",
@@ -304,45 +211,21 @@ export default {
       amount: 0,
       selected: null,
       form: {
-        MerchantCode: "M031732",
-        OrderNo: "00001",
         CustomerId: null,
         Amount: null,
         PhoneNumber: null,
         Description: null,
         ChannelCode: null,
-        Currency: 764,
-        LangCode: "TH",
-        RouteNo: "1",
-        IPAddress: "192.168.1.7:8080",
-        ApiKey:
-          "AqdoHRkWVIAi27yrsUu8WANXtWIM026PL0Mz8F9Vg7NCLEp1RsxRSv4yhV4RZgSO",
         ProductImageUrl: null,
-        CheckSum: null,
       },
     };
   },
   created() {
     this.selected = this.tokenList[0];
-    this.form.CustomerId = this.me.uid;
   },
   methods: {
     channelPayment(ch) {
       this.form.ChannelCode = ch;
-    },
-    async checkSumEncryp() {
-      let md5key =
-        "Z5zZf38usZKeeVFjwvbwshr7Aq7t18QWeZI9vLMzYcK2FG5vOMI47o36O7ppBxIXKbUyWjjG8q9y3a8QtpM1GRWQnGBwaxPob0cGMhxAQgU1Q5inMp8cRujQKbiFDnejKMFf2qb44ywzABH5ESUAhWBSgT1JJiXZdzT5k";
-      var key = Object.keys(this.form);
-      let txt = "";
-      key.forEach((element) => {
-        if (element != "CheckSum") {
-          txt += this.form[element];
-        }
-      });
-      txt += md5key;
-      let cryp = await CryptoJS.MD5(txt);
-      this.form.CheckSum = await cryp.toString();
     },
     async pay() {
       this.app_loading(true);
@@ -351,20 +234,41 @@ export default {
         this.form.Description = this.selected.address;
         this.form.ProductImageUrl = this.selected.logoURI;
         if (this.form.ChannelCode == "payplus_kbank") {
-          if (this.$refs.formKplus) {
-            await this.checkSumEncryp();
-            await this.saveToFB(this.form);
-            await this.$refs.paymentMobile.submit();
-          }
         } else if (this.form.ChannelCode == "bank_qrcode") {
           delete this.form.PhoneNumber;
-          await this.checkSumEncryp();
-          await this.saveToFB(this.form);
-          await this.$refs.paymentQR.submit();
         }
+        this.form.CustomerId = this.me.uid;
+        let params = {
+          ethereumAddress: this.ethereumAddress,
+          tokenAddress: this.selected.address,
+          tokenAmount: this.amount,
+          form: this.form,
+        };
+        let response = await this.$axios.post(
+          "https://asia-southeast1-mpv-wallet.cloudfunctions.net/mpv/api/payment/create",
+          params
+        );
+        this.app_loading(false);
+        let url = response.data.data.PaymentUrl;
+        this.alert_show({
+          type: "success",
+          header: "การทำรายการสำเร็จ",
+          title: "กรุณาชำระเงิน <br/> ระบบจะทำการส่งเหรียญให้ท่าน",
+        }).then(() => {
+          this.panel = null;
+          this.amount = 0;
+          for (let i in this.form) {
+            this.form[i] = null;
+          }
+        });
+        window.open(url, "_blank");
       } catch (err) {
         console.log(err);
         this.app_loading(false);
+        this.alert_show({
+          type: "error",
+          title: "การทำรายการล้มเหลว <br/> กรุณาลองใหม่อีกครั้ง",
+        });
       }
     },
     async saveToFB(form) {
