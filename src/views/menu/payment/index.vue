@@ -231,7 +231,7 @@ export default {
       this.app_loading(true);
       try {
         this.form.Amount = this.sum_price + "00";
-        this.form.Description = this.selected.address;
+        this.form.Description = `ซื้อเหรียญ ${this.selected.symbol} จำนวน ${this.amount} เหรียญ`; 
         this.form.ProductImageUrl = this.selected.logoURI;
         if (this.form.ChannelCode == "payplus_kbank") {
         } else if (this.form.ChannelCode == "bank_qrcode") {
