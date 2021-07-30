@@ -75,8 +75,9 @@
             </div>
           </v-col>
           <v-col cols="12" class="mt-3">
-            <div>
-              <h4>Payment Method</h4>
+            <div class="d-flex align-center">
+              <v-icon large> payment </v-icon>
+              <span class="ml-1">Payment methods</span>
             </div>
           </v-col>
           <v-col cols="12">
@@ -151,6 +152,36 @@
           </v-col>
         </v-row>
       </v-col>
+      <v-col cols="12" class="mt-30">
+        <div class="d-flex align-center">
+          <v-icon large> history </v-icon>
+          <span class="ml-1">ประวัติการซื้อเหรียญ</span>
+        </div>
+        <v-card class="box-detail mt-2" elevation="0">
+          <div v-if="history.length > 0">
+            <history-pay-item
+              v-for="(item, i) in history"
+              :key="'history' + i"
+              :Description="item.Description"
+              :TransactionId="item.TransactionId"
+              :tokenAddress="item.tokenAddress"
+              :PaymentStatus="
+                item.PaymentStatus == undefined
+                  ? 99
+                  : Number.parseInt(item.PaymentStatus)
+              "
+              :Amount="item.Amount"
+            />
+          </div>
+          <div
+            v-else
+            class="d-flex align-center justify-center"
+            style="height: 100px"
+          >
+            ไม่มีข้อมูล...
+          </div>
+        </v-card>
+      </v-col>
     </v-row>
     <bottom-nav />
   </div>
@@ -159,12 +190,14 @@
 <script>
 import layout from "../../../components/layout.vue";
 import bottomNav from "../../../components/BottomNav.vue";
+import HistoryPayItem from "../../../components/history_pay_item.vue";
 import { paymentsCollection } from "../../../plugins/firebase";
 export default {
   name: "Payment",
   components: {
     layout: layout,
     "bottom-nav": bottomNav,
+    "history-pay-item": HistoryPayItem,
   },
   computed: {
     sum_price() {
@@ -218,12 +251,32 @@ export default {
         ChannelCode: null,
         ProductImageUrl: null,
       },
+      history: [],
     };
   },
   created() {
     this.selected = this.tokenList[0];
   },
+  mounted() {
+    this.$nextTick(async () => {
+      await this.getHistory();
+    });
+  },
   methods: {
+    async getHistory() {
+      let response = await paymentsCollection
+        .where("CustomerId", "==", String(this.me.uid))
+        .orderBy("OrderNo", "desc")
+        .limit(20)
+        .get();
+      if (!response.empty) {
+        let history = [];
+        for (let i of response.docs) {
+          history.push(i.data());
+        }
+        this.history = history;
+      }
+    },
     channelPayment(ch) {
       this.form.ChannelCode = ch;
     },
@@ -231,7 +284,7 @@ export default {
       this.app_loading(true);
       try {
         this.form.Amount = this.sum_price + "00";
-        this.form.Description = `ซื้อเหรียญ ${this.selected.symbol} จำนวน ${this.amount} เหรียญ`; 
+        this.form.Description = `ซื้อเหรียญ ${this.selected.symbol} จำนวน ${this.amount} เหรียญ`;
         this.form.ProductImageUrl = this.selected.logoURI;
         if (this.form.ChannelCode == "payplus_kbank") {
         } else if (this.form.ChannelCode == "bank_qrcode") {
@@ -262,6 +315,7 @@ export default {
           }
         });
         window.open(url, "_blank");
+        this.getHistory();
       } catch (err) {
         console.log(err);
         this.app_loading(false);
@@ -283,7 +337,7 @@ export default {
   min-height: 100vh;
   height: 100%;
   background-color: white;
-  padding: 24px 8px 50px 8px;
+  padding: 24px 8px 70px 8px;
 
   .sub-text {
     color: #adadad;

@@ -77,7 +77,7 @@
             <v-col cols="12" class="mt-30" v-show="showPage">
               <div class="d-flex align-center">
                 <v-icon large> history </v-icon>
-                <span class="ml-1">ประวัติการทำทำรายการ</span>
+                <span class="ml-1">ประวัติการทำรายการ</span>
               </div>
               <v-card class="box-detail mt-2" elevation="0">
                 <div v-if="historyByToken.length > 0">
