@@ -12,64 +12,135 @@
           <v-row no-gutters class="pb-5">
             <v-col cols="12">
               <v-card class="box-detail" elevation="0">
-                <v-toolbar color="#c71e2b" dark>
-                  <div>
-                    Balance :
-                    {{ parseUtillETHtoShow(tokenByName.balance) }}
-                  </div>
-                  <v-spacer></v-spacer>
-                  <div>
-                    <v-img
-                      :src="tokenByName.logoURI"
-                      height="30px"
-                      width="30px"
-                      contain
-                    ></v-img>
-                  </div>
+                <v-toolbar color="#FFFFFF">
+                  <v-row>
+                    <v-col cols="6" class="text-right" align-self="center">
+                      <v-row>
+                        <v-col cols="4" class="ma-0 pa-0 pl-5" align-self="center">
+                          <div class="text-right">
+                            <v-img
+                              :src="tokenByName.logoURI"
+                              height="40px"
+                              width="40px"
+                              contain
+                            ></v-img>
+                          </div>
+                        </v-col>
+                        <v-col
+                          cols="8"
+                          class="text-start ma-0 pa-3 pl-5"
+                          align-self="center"
+                        >
+                          <v-row>
+                            {{ tokenByName.name }}
+                          </v-row>
+                          <v-row style="font-size: 10px">
+                            1 {{ tokenByName.name }} = 10{{ o }} ฿
+                          </v-row>
+                        </v-col>
+                      </v-row>
+                    </v-col>
+                    <v-col cols="6" class="text-right" align-self="center">
+                      <v-row class="text-right">
+                        <v-col class="ma-0 pa-0 pr-4">
+                          {{ parseUtillETHtoShow(tokenByName.balance) }}
+                        </v-col>
+                      </v-row>
+                      <v-row class="text-right" style="font-size: 10px">
+                        <v-col class="ma-0 pa-0 pr-4">
+                          = 13,000 ฿ {{ s }}
+                        </v-col>
+                      </v-row>
+                    </v-col>
+                  </v-row>
                 </v-toolbar>
                 <div class="pa-4 mt-4">
                   <v-form
                     ref="form"
                     v-model="valid"
                     lazy-validation
-                    class="text-right"
+                    class="text-center"
                   >
-                    <v-text-field
-                      outlined
-                      background-color="white"
-                      v-model="form.to"
-                      :rules="itemRules"
-                      label="หมายเลขกระเป๋า"
-                      required
+                    <v-row
+                      style="background-color: white"
+                      class="mr-5 ml-5 mb-5 pa-3 rounded-xl"
                     >
-                    </v-text-field>
+                      <v-col cols="10" class="pa-0 ma-0">
+                        <v-text-field
+                          solo
+                          flat
+                          background-color="white"
+                          v-model="form.to"
+                          :rules="itemRules"
+                          label="หมายเลขที่อยู่กระเป๋า"
+                          hide-details="auto"
+                          required
+                        >
+                        </v-text-field
+                      ></v-col>
+                      <v-col cols="2" align-self="center" class="pa-0">
+                        <v-btn text
+                          ><v-img
+                            src="../../../assets/qr-code-button-icon.png"
+                          ></v-img
+                        ></v-btn>
+                      </v-col>
+                    </v-row>
 
-                    <v-text-field
-                      type="number"
-                      outlined
-                      background-color="white"
-                      v-model="form.amount"
-                      :rules="[
-                        (v) => !!v || 'กรุณากรอกข้อมูล',
-                        (v) => parseFloat(v) > 0 || 'จำนวนต้องมากกว่า 0',
-                        (v) =>
-                          parseFloat(v) <=
-                            parseFloat(parseUtillETH(tokenByName.balance)) ||
-                          'จำนวนไม่ถูกต้อง',
-                      ]"
-                      label="จำนวน"
-                      required
+                    <!-- Number Coin -->
+                    <v-row
+                      style="background-color: white"
+                      class="mr-5 ml-5 mb-5 pa-3 rounded-xl"
                     >
-                    </v-text-field>
-                    <v-btn text class="mr-2" @click="reset"> เคลียร์ </v-btn>
-                    <v-btn
-                      :disabled="!valid"
-                      color="#c71e2b"
-                      class="ml-2"
-                      @click="validate"
-                    >
-                      <span class="white--text"> โอนเหรียญ </span>
-                    </v-btn>
+                      <v-col cols="10" class="ma-0 pa-0">
+                        <v-text-field
+                          type="number"
+                          solo
+                          flat
+                          background-color="white"
+                          v-model="form.amount"
+                          :rules="[
+                            (v) => !!v || 'กรุณากรอกข้อมูล',
+                            (v) => parseFloat(v) > 0 || 'จำนวนต้องมากกว่า 0',
+                            (v) =>
+                              parseFloat(v) <=
+                                parseFloat(
+                                  parseUtillETH(tokenByName.balance)
+                                ) || 'จำนวนไม่ถูกต้อง',
+                          ]"
+                          hide-details="auto"
+                          label="จำนวนเหรียญ"
+                          required
+                        >
+                        </v-text-field>
+                      </v-col>
+                      <v-col cols="2" class="ma-0 pa-0" align-self="center"> {{tokenByName.name}}</v-col>
+                    </v-row>
+                    <v-row>
+                      <v-col cols="6">
+                        <v-btn
+                          color="#000000"
+                          class="mr-2 rounded-xl"
+                          width="100%"
+                          @click="reset"
+                        >
+                          <span class="grey--text text--lighten-1"
+                            >เคลียร์</span
+                          >
+                        </v-btn>
+                      </v-col>
+                      <v-col cols="6">
+                        <v-btn
+                          :disabled="!valid"
+                          color="#000000"
+                          class="ml-2 rounded-xl"
+                          width="100%"
+                          @click="validate"
+                        >
+                          <span class="white--text"> โอนเหรียญ </span>
+                        </v-btn>
+                      </v-col>
+                    </v-row>
                   </v-form>
                 </div>
               </v-card>
@@ -302,7 +373,7 @@ export default {
     }
     this.$nextTick(() => {
       const vm = this;
-      var init = function() {
+      var init = function () {
         vm.wsProvider = new vm.$ethers.providers.WebSocketProvider(
           "wss://ws.xchain.asia"
         );
@@ -344,7 +415,6 @@ export default {
                 String(transaction.from).toLowerCase() ==
                   String(vm.ethereumAddress).toLowerCase()
               ) {
-                
                 setTimeout(() => {
                   vm.$store.dispatch("getHistory");
                   vm.$store.dispatch("getBalance");
