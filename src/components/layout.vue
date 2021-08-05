@@ -2,18 +2,18 @@
   <div class="layout-page">
     <v-row no-gutters>
       <v-col cols="12" class="d-flex align-start">
-        <v-icon large color="#A7A7A7" @click="$emit('onBack')"
+        <v-icon large color="#6F6F6F" @click="$emit('onBack')"
           >keyboard_arrow_left</v-icon
         >
         <span class="ml-2">
-          <h2 v-html="header"></h2>
+          <h2 v-html="header" class="grey--text text--darken-1"></h2>
         </span>
         <v-spacer> </v-spacer>
-        <v-btn v-if="receive" text large @click="$emit('receive')" class="text-center">
-          <div>
-            <v-icon>play_for_work</v-icon>
-            <div style="font-size:12px;">รับเหรียญ</div>
-          </div>
+        <v-btn v-if="receive" rounded large @click="$emit('receive')" class="text-center white--text" color="black">
+          <v-row>
+            <v-col><div style="font-size:14px;">รับเหรียญ</div></v-col>
+            <v-col class="pa-0 pt-3 pb-3"><v-img src="../assets/buyicon.png" width="20px" height="20px"></v-img></v-col>
+          </v-row>
         </v-btn>
       </v-col>
       <v-col cols="12" class="mt-5 px-3">
