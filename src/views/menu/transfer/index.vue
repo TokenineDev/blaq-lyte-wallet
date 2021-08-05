@@ -1,5 +1,21 @@
 <template>
   <div class="transfer-page">
+    <v-row class="pt-8">
+      <v-col cols="4" class="pa-0"></v-col>
+      <v-col cols="2" class="pa-0 d-flex" align-self="center">
+          <v-img
+            src="../../../assets/wallet-icon.png"
+            height="80px"
+            width="90px"
+            contain
+          ></v-img>
+      </v-col>
+      <v-col cols="6" class="pa-0 pl-2" align-self="center" contain>
+        BLAQ LYTE
+        <br/>
+        WALLET
+      </v-col>
+    </v-row>
     <layout
       :header="tokenByName.name"
       @onBack="$router.push('/')"
@@ -16,7 +32,11 @@
                   <v-row>
                     <v-col cols="6" class="text-right" align-self="center">
                       <v-row>
-                        <v-col cols="4" class="ma-0 pa-0 pl-5" align-self="center">
+                        <v-col
+                          cols="4"
+                          class="ma-0 pa-0 pl-5"
+                          align-self="center"
+                        >
                           <div class="text-right">
                             <v-img
                               :src="tokenByName.logoURI"
@@ -114,13 +134,15 @@
                         >
                         </v-text-field>
                       </v-col>
-                      <v-col cols="2" class="ma-0 pa-0" align-self="center"> {{tokenByName.name}}</v-col>
+                      <v-col cols="2" class="ma-0 pa-0" align-self="center">
+                        {{ tokenByName.name }}</v-col
+                      >
                     </v-row>
                     <v-row>
                       <v-col cols="6">
                         <v-btn
                           color="#000000"
-                          class="mr-2 rounded-xl"
+                          class="mr-2 rounded-xl pa-6"
                           width="100%"
                           @click="reset"
                         >
@@ -133,7 +155,7 @@
                         <v-btn
                           :disabled="!valid"
                           color="#000000"
-                          class="ml-2 rounded-xl"
+                          class="ml-2 rounded-xl pa-6"
                           width="100%"
                           @click="validate"
                         >
@@ -472,9 +494,13 @@ function decrypt(message = "", key = "") {
 </script>
 
 <style lang="scss">
-.transfer-page {
-  .box-detail {
+body {
     background-color: #f7f7f7;
   }
+.transfer-page {
+  .box-detail {
+    background-color: #D8E6F0;
+  }
+  background-color: #E2EBF2;
 }
 </style>
