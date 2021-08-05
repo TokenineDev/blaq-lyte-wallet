@@ -1,13 +1,38 @@
 <template>
   <div class="bar-me">
-    <v-app-bar color="#c71e2b" max-width="500px" flat height="64px">
+    <v-app-bar color="transparent" max-width="500px" flat height="64px">
+      <v-img
+        :src="require('/src/assets/BlaqLogo.png')"
+        height="2rem"
+        contain
+      ></v-img>
+      <div class="address">
+        <input
+          type="text"
+          class="input-pvkey"
+          ref="ethWallet"
+          :value="ethereumAddress"
+          @click="CopyEth"
+          readonly
+        />
+      </div>
       <v-menu bottom offset-y>
         <template v-slot:activator="{ on, attrs }">
-          <div class="white--text pl-3" v-bind="attrs" v-on="on">
-            {{ $store.state.auth.me.email || "" }} <v-icon>arrow_drop_down</v-icon>
-          </div>
+          <v-avatar class="avatar" color="indigo" v-bind="attrs" v-on="on">
+            <v-icon dark>
+              mdi-account-circle
+            </v-icon>
+          </v-avatar>
         </template>
         <v-list>
+          <v-list-item>
+            <div
+              class="pl-2"
+              style="font-size: 11px; text-transform: uppercase"
+            >
+              {{ $store.state.auth.me.email || "" }}
+            </div>
+          </v-list-item>
           <v-list-item>
             <v-list-item-title @click="exportKey">
               <v-icon medium> outbox </v-icon>
@@ -31,11 +56,6 @@
         </v-list>
       </v-menu>
       <v-spacer></v-spacer>
-      <div>
-        <v-btn dark icon to="/scan">
-          <v-icon>qr_code</v-icon>
-        </v-btn>
-      </div>
     </v-app-bar>
   </div>
 </template>
@@ -49,6 +69,16 @@ export default {
     "pin-pad": pinPad,
   },
   methods: {
+    CopyEth() {
+      try {
+        this.$refs.ethWallet.select();
+        document.execCommand("copy");
+        this.alert_show({
+          type: "success",
+          title: "Copied on clipboard !",
+        });
+      } catch (err) {}
+    },
     logout() {
       const vm = this;
       vm.alert_show({
@@ -92,10 +122,13 @@ export default {
 
 <style lang="scss">
 .bar-me {
-  background-color: #c71e2b;
+  background-color: transparent;
   > header {
     margin: 0 auto;
     padding: 0;
   }
+}
+.address {
+  justify-content: center;
 }
 </style>

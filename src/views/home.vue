@@ -9,21 +9,15 @@
       <v-row no-gutters class="layout-body-home">
         <v-col cols="12" class="text-center logo">
           <div>
-            <v-img :src="'/image/logo.png'" height="80px" contain></v-img>
-          </div>
-          <div class="my-2 px-5">
-            <input
-              type="text"
-              class="input-pvkey"
-              ref="ethWallet"
-              :value="ethereumAddress"
-              @click="CopyEth"
-              readonly
-            />
+            <v-img
+              :src="require('/src/assets/content.png')"
+              height="8rem"
+              contain
+            ></v-img>
           </div>
         </v-col>
         <v-col cols="12" class="px-4 mb-5">
-          <v-card class="px-4">
+          <div class="px-4 tokenList">
             <token-list
               v-for="(token, i) in tokenList"
               :key="'token ' + i"
@@ -33,7 +27,7 @@
               :balanceX="String(token.balance)"
               :lastChild="i >= tokenList.length - 1"
             />
-          </v-card>
+          </div>
         </v-col>
       </v-row>
     </vue-pull-refresh>
@@ -249,10 +243,10 @@ function decrypt(message = "", key = "") {
 .home-page {
   min-height: 100vh;
   height: 100%;
-  background-color: white;
+  background-color: #e2ebf2;
   padding-bottom: 70px;
   .logo {
-    margin: 30px 0px;
+    margin: 1.5rem 0px;
   }
 
   .layout-body-home {
@@ -262,14 +256,19 @@ function decrypt(message = "", key = "") {
 }
 .input-pvkey {
   border: 1px solid #e5e5e5 !important;
+  background-color: white;
   width: 90%;
   border-radius: 50px;
   text-align: center;
   padding: 10px;
   color: #6d6b6b;
   font-size: 14px;
-  margin-top: 10px;
   max-width: 250px;
+}
+
+.tokenList {
+  background-color: #ffffff3a;
+  border-radius: 10px;
 }
 
 .v-toolbar__content {

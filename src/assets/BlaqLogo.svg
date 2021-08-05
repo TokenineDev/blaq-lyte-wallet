@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="91.172" height="35.086" viewBox="0 0 91.172 35.086">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 8px;
+      }
+
+      .cls-1, .cls-2 {
+        font-family: SegoeUI, Segoe UI;
+        letter-spacing: 0.05em;
+      }
+
+      .cls-2 {
+        font-size: 9px;
+      }
+    </style>
+  </defs>
+  <g id="Group_6" data-name="Group 6" transform="translate(-32.719 -507.293)">
+    <g id="Group_1" data-name="Group 1" transform="translate(32.719 507.293)">
+      <ellipse id="Ellipse_1" data-name="Ellipse 1" cx="3.157" cy="10.429" rx="3.157" ry="10.429" transform="translate(7.807 7.114)"/>
+      <ellipse id="Ellipse_2" data-name="Ellipse 2" cx="3.157" cy="6.176" rx="3.157" ry="6.176" transform="translate(0 11.366)"/>
+      <ellipse id="Ellipse_3" data-name="Ellipse 3" cx="3.157" cy="6.176" rx="3.157" ry="6.176" transform="translate(32.158 11.366)"/>
+      <ellipse id="Ellipse_4" data-name="Ellipse 4" cx="3.157" cy="17.543" rx="3.157" ry="17.543" transform="translate(16.245)"/>
+      <ellipse id="Ellipse_5" data-name="Ellipse 5" cx="3.157" cy="10.429" rx="3.157" ry="10.429" transform="translate(24.683 7.114)"/>
+    </g>
+    <g id="Group_5" data-name="Group 5" transform="translate(81.891 513.259)">
+      <g id="Group_4" data-name="Group 4" transform="translate(0)">
+        <g id="Group_3" data-name="Group 3">
+          <g id="Group_2" data-name="Group 2">
+            <text id="BLAQ_LYTE" data-name="BLAQ LYTE" class="cls-1" transform="translate(0 7)"><tspan x="0" y="0">BLAQ LYTE</tspan></text>
+          </g>
+        </g>
+        <text id="WALLET" class="cls-2" transform="translate(0.26 20.144)"><tspan x="0" y="0">WALLET</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

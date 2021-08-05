@@ -3,13 +3,24 @@
     <router-link to="/">
       <v-icon color="#EAEAEA" size="28"> account_balance_wallet </v-icon>
     </router-link>
+    <div class="scanLink">
+      <router-link to="/scan">
+        <v-icon color="#EAEAEA">qr_code</v-icon>
+      </router-link>
+    </div>
     <router-link to="/payment">
       <!-- <v-icon color="#EAEAEA" size="28"> qr_code </v-icon> -->
-      <v-img class="mx-auto" :src="pathBuyIcon" height="28px" width="28px" contain></v-img>
+      <v-img
+        class="mx-auto"
+        :src="pathBuyIcon"
+        height="28px"
+        width="28px"
+        contain
+      ></v-img>
     </router-link>
-    <router-link to="/dapp">
+    <!-- <router-link to="/dapp">
       <v-icon color="#EAEAEA" size="28"> touch_app </v-icon>
-    </router-link>
+    </router-link> -->
   </div>
 </template>
 
@@ -18,15 +29,15 @@ export default {
   name: "bottomNav",
   computed: {
     routeName() {
-      return this.$route.name
+      return this.$route.name;
     },
     pathBuyIcon() {
-      if(this.routeName == "Payment") {
-        return "/image/buyicon.png"
+      if (this.routeName == "Payment") {
+        return "/image/buyicon.png";
       } else {
-        return "/image/buyiconactive.png"
+        return "/image/buyiconactive.png";
       }
-    }
+    },
   },
   data() {
     return {};
@@ -44,7 +55,7 @@ export default {
   bottom: 0px;
   left: 0px;
   width: 100%;
-  background-color: #c71e2b;
+  background-color: black;
   height: 50px;
   box-shadow: 0 2px 4px -1px rgb(0 0 0 / 20%), 0 4px 5px 0 rgb(0 0 0 / 14%),
     0 1px 10px 0 rgb(0 0 0 / 12%);
@@ -78,5 +89,11 @@ export default {
     position: absolute;
     bottom: 10px;
   }
+}
+
+.scanLink {
+  padding: 1rem;
+  background-color: black;
+  border-radius: 5rem;
 }
 </style>
