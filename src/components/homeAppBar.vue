@@ -3,13 +3,13 @@
     <v-app-bar color="transparent" max-width="500px" flat height="64px">
       <v-img
         :src="require('/src/assets/wallet-icon.svg')"
-        height="2rem"
+        height="2.5rem"
         contain
       ></v-img>
       <div class="address">
         <input
           type="text"
-          class="input-pvkey"
+          class="input-pvkey pa-4 pr-5"
           ref="ethWallet"
           :value="ethereumAddress"
           @click="CopyEth"
@@ -19,9 +19,9 @@
       <v-menu bottom offset-y>
         <template v-slot:activator="{ on, attrs }">
           <v-avatar class="avatar" color="indigo" v-bind="attrs" v-on="on">
-            <v-icon dark>
-              mdi-account-circle
-            </v-icon>
+            <v-img
+              :src="require('/src/assets/default-user-icon.svg')"
+            ></v-img>
           </v-avatar>
         </template>
         <v-list>
