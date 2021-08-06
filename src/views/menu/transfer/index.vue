@@ -1,19 +1,13 @@
 <template>
   <div class="transfer-page">
     <v-row class="pt-8">
-      <v-col cols="4" class="pa-0"></v-col>
-      <v-col cols="2" class="pa-0 d-flex" align-self="center">
+      <v-col cols="12" class="pa-0 d-flex" align-self="center">
           <v-img
-            src="../../../assets/wallet-icon.png"
-            height="80px"
-            width="90px"
+            src="../../../assets/wallet-icon.svg"
+            height="60px"
+            width="60px"
             contain
           ></v-img>
-      </v-col>
-      <v-col cols="6" class="pa-0 pl-2" align-self="center" contain>
-        BLAQ LYTE
-        <br/>
-        WALLET
       </v-col>
     </v-row>
     <layout
@@ -54,7 +48,7 @@
                           <v-row>
                             {{ tokenByName.name }}
                           </v-row>
-                          <v-row style="font-size: 10px">
+                          <v-row style="font-size: 10px" class="grey--text">
                             1 {{ tokenByName.name }} = 10{{ o }} ฿
                           </v-row>
                         </v-col>
@@ -67,7 +61,7 @@
                         </v-col>
                       </v-row>
                       <v-row class="text-right" style="font-size: 10px">
-                        <v-col class="ma-0 pa-0 pr-4">
+                        <v-col class="ma-0 pa-0 pr-4 grey--text">
                           = 13,000 ฿ {{ s }}
                         </v-col>
                       </v-row>
@@ -83,7 +77,7 @@
                   >
                     <v-row
                       style="background-color: white"
-                      class="mr-5 ml-5 mb-5 pa-3 rounded-xl"
+                      class="mr-1 ml-1 mb-5 pl-1 pr-3 pt-2 pb-2 rounded-lg font-weight-bold"
                     >
                       <v-col cols="10" class="pa-0 ma-0">
                         <v-text-field
@@ -110,7 +104,7 @@
                     <!-- Number Coin -->
                     <v-row
                       style="background-color: white"
-                      class="mr-5 ml-5 mb-5 pa-3 rounded-xl"
+                      class="mr-1 ml-1 mb-5 pl-1 pr-3 pt-2 pb-2 rounded-lg font-weight-bold"
                     >
                       <v-col cols="10" class="ma-0 pa-0">
                         <v-text-field
@@ -134,7 +128,7 @@
                         >
                         </v-text-field>
                       </v-col>
-                      <v-col cols="2" class="ma-0 pa-0" align-self="center">
+                      <v-col cols="2" class="ma-0 pa-0 grey--text" align-self="center">
                         {{ tokenByName.name }}</v-col
                       >
                     </v-row>
@@ -167,10 +161,11 @@
                 </div>
               </v-card>
             </v-col>
-            <v-col cols="12" class="mt-30" v-show="showPage">
-              <div class="d-flex align-center">
+            <!-- History Zone -->
+            <v-col cols="12" class="mt-16" v-show="showPage">
+              <div class="d-flex align-center pl-2 font-weight-bold">
                 <v-icon large> history </v-icon>
-                <span class="ml-1">ประวัติการทำรายการ</span>
+                <span class="ml-1 ">ประวัติการทำรายการ</span>
               </div>
               <v-card class="box-detail mt-2" elevation="0">
                 <div v-if="historyByToken.length > 0">

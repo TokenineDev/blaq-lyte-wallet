@@ -11,8 +11,8 @@
         <v-spacer> </v-spacer>
         <v-btn v-if="receive" rounded large @click="$emit('receive')" class="text-center white--text" color="black">
           <v-row>
-            <v-col><div style="font-size:14px;">รับเหรียญ</div></v-col>
-            <v-col class="pa-0 pt-3 pb-3"><v-img src="../assets/buyicon.png" width="20px" height="20px"></v-img></v-col>
+            <v-col><div style="font-size:14px;" class="font-weight-bold">รับเหรียญ</div></v-col>
+            <v-col class="pa-0 pt-3 pb-3"><v-img src="../assets/buyicon.svg" width="23px" height="20px"></v-img></v-col>
           </v-row>
         </v-btn>
       </v-col>
