@@ -95,7 +95,7 @@
                       <v-col cols="2" align-self="center" class="pa-0">
                         <v-btn text
                           ><v-img
-                            src="../../../assets/qr-code-button-icon.png"
+                            src="../../../assets/qr-code-button-icon.svg"
                           ></v-img
                         ></v-btn>
                       </v-col>

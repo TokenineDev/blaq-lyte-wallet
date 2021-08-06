@@ -2,7 +2,7 @@
   <div class="bar-me">
     <v-app-bar color="transparent" max-width="500px" flat height="64px">
       <v-img
-        :src="require('/src/assets/BlaqLogo.png')"
+        :src="require('/src/assets/wallet-icon.svg')"
         height="2rem"
         contain
       ></v-img>

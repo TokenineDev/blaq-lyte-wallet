@@ -8,10 +8,10 @@
       <app-bar @exportKey="showPin = true" />
       <v-row no-gutters class="layout-body-home">
         <v-col cols="12" class="text-center logo">
-          <div>
+          <div class="pl-10 pr-10">
             <v-img
-              :src="require('/src/assets/content.png')"
-              height="8rem"
+              :src="require('/src/assets/content.svg')"
+              width="100%"
               contain
             ></v-img>
           </div>
