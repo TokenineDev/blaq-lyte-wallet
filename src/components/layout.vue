@@ -43,7 +43,6 @@ export default {
 
 <style lang="scss">
 .layout-page {
-  height: 100vh;
   min-height: 500px;
   padding: 24px 8px;
 }

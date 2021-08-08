@@ -77,7 +77,7 @@
                   >
                     <v-row
                       style="background-color: white"
-                      class="mr-1 ml-1 mb-5 pl-1 pr-3 pt-2 pb-2 rounded-lg font-weight-bold"
+                      class="mr-1 ml-1 mb-5 pl-1 pr-3 pt-2 pb-2 rounded-lg font-weight-bold custom-text-field"
                     >
                       <v-col cols="10" class="pa-0 ma-0">
                         <v-text-field
@@ -104,7 +104,7 @@
                     <!-- Number Coin -->
                     <v-row
                       style="background-color: white"
-                      class="mr-1 ml-1 mb-5 pl-1 pr-3 pt-2 pb-2 rounded-lg font-weight-bold"
+                      class="mr-1 ml-1 mb-5 pl-1 pr-3 pt-2 pb-2 rounded-lg font-weight-bold custom-text-field"
                     >
                       <v-col cols="10" class="ma-0 pa-0">
                         <v-text-field
@@ -167,7 +167,7 @@
                 <v-icon large> history </v-icon>
                 <span class="ml-1 ">ประวัติการทำรายการ</span>
               </div>
-              <v-card class="box-detail mt-2" elevation="0">
+              <v-card class="box-detail-history mt-2" elevation="0">
                 <div v-if="historyByToken.length > 0">
                   <history-item
                     v-for="(history, i) in historyByToken"
@@ -492,10 +492,18 @@ function decrypt(message = "", key = "") {
   .transfer-page {
     .box-detail {
       box-shadow: 0px 0px 5px #CDE2F0 !important;
+      background: radial-gradient(at left 50%,rgba(254,254,254,1) 0%, rgba(233,240,245,1) 74%, rgba(226,235,242,1) 100%);
+    }
+    .box-detail-history {
+      box-shadow: 0px 0px 5px #CDE2F0 !important;
     }
     .custom-toolbar {
       /* background-color: #fff !important; */
       box-shadow: 0px 0px 5px #CDE2F0 !important;
+    }
+    .custom-text-field {
+      border-radius: 9px;
+      box-shadow: 0px 0px 5px #CDE2F0;
     }
   }
 </style>
