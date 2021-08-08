@@ -1,6 +1,6 @@
 <template>
   <div class="bar-me">
-    <v-app-bar color="transparent" max-width="500px" flat height="64px">
+    <v-app-bar class="mt-3" color="transparent" max-width="500px" flat height="64px">
       <v-img
         :src="require('/src/assets/wallet-icon.svg')"
         height="2.5rem"
