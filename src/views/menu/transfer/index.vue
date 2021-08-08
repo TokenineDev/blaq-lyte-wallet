@@ -22,7 +22,7 @@
           <v-row no-gutters class="pb-5">
             <v-col cols="12">
               <v-card class="box-detail" elevation="0">
-                <v-toolbar color="#FFFFFF">
+                <v-toolbar class="custom-toolbar" color="#FFFFFF">
                   <v-row>
                     <v-col cols="6" class="text-right" align-self="center">
                       <v-row>
@@ -489,13 +489,13 @@ function decrypt(message = "", key = "") {
 </script>
 
 <style lang="scss">
-body {
-    background-color: #f7f7f7;
+  .transfer-page {
+    .box-detail {
+      box-shadow: 0px 0px 5px #CDE2F0 !important;
+    }
+    .custom-toolbar {
+      /* background-color: #fff !important; */
+      box-shadow: 0px 0px 5px #CDE2F0 !important;
+    }
   }
-.transfer-page {
-  .box-detail {
-    background-color: #D8E6F0;
-  }
-  background-color: #E2EBF2;
-}
 </style>

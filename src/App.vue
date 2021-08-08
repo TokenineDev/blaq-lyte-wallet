@@ -76,6 +76,12 @@ export default {
 };
 </script>
 <style lang="scss">
+
+#app {
+  background: radial-gradient(at left 50%,rgba(254,254,254,1) 0%, rgba(233,240,245,1) 74%, rgba(226,235,242,1) 100%);
+   /* background: radial-gradient(at left 60%, rgba(254,254,254,1) 0%, rgba(233,240,245,1) 74%, rgba(226,235,242,1) 100%);  */
+}
+
 .alert-toast {
   padding: 0px !important;
   position: fixed !important;

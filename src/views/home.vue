@@ -243,7 +243,6 @@ function decrypt(message = "", key = "") {
 .home-page {
   min-height: 100vh;
   height: 100%;
-  background-color: #e2ebf2;
   padding-bottom: 70px;
   .logo {
     margin: 1.5rem 0px;

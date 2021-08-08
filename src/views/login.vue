@@ -98,7 +98,6 @@ export default {
   top: 0;
   left: 0;
   width: 100%;
-  background: white;
   height: calc(var(--vh, 1vh) * 100);
 
   .logo {

@@ -33,7 +33,6 @@ export default {
 .dapp-page {
   min-height: 100vh;
   height: 100%;
-  background-color: white;
   padding-bottom: 50px;
 }
 </style>

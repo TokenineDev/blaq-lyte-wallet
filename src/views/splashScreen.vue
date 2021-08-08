@@ -56,8 +56,6 @@ export default {
   left: 0px;
   width: 100%;
   height: 100vh;
-  background: white;
-
   .logo {
     width: 50%;
     min-width: 150px;
