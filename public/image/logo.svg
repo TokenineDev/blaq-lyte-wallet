@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="176.52" height="48.178" viewBox="0 0 176.52 48.178">
+  <g id="Group_6" data-name="Group 6" transform="translate(-32.719 -507.293)">
+    <g id="Group_1" data-name="Group 1" transform="translate(32.719 507.293)">
+      <ellipse id="Ellipse_1" data-name="Ellipse 1" cx="4.335" cy="14.321" rx="4.335" ry="14.321" transform="translate(10.72 9.768)"/>
+      <ellipse id="Ellipse_2" data-name="Ellipse 2" cx="4.335" cy="8.481" rx="4.335" ry="8.481" transform="translate(0 15.608)"/>
+      <ellipse id="Ellipse_3" data-name="Ellipse 3" cx="4.335" cy="8.481" rx="4.335" ry="8.481" transform="translate(44.158 15.608)"/>
+      <ellipse id="Ellipse_4" data-name="Ellipse 4" cx="4.335" cy="24.089" rx="4.335" ry="24.089" transform="translate(22.307)"/>
+      <ellipse id="Ellipse_5" data-name="Ellipse 5" cx="4.335" cy="14.321" rx="4.335" ry="14.321" transform="translate(33.894 9.768)"/>
+    </g>
+    <g id="Group_5" data-name="Group 5" transform="translate(100.239 515.486)">
+      <g id="Group_4" data-name="Group 4" transform="translate(0)">
+        <g id="Group_3" data-name="Group 3">
+          <g id="Group_2" data-name="Group 2">
+            <text id="BLAQ_LYTE" data-name="BLAQ LYTE" transform="translate(0 13)" font-size="14" font-family="MonumentExtended-Regular, Monument" letter-spacing="0.05em"><tspan x="0" y="0">BLAQ LYTE</tspan></text>
+          </g>
+        </g>
+        <text id="WALLET" transform="translate(0.357 29.676)" font-size="14" font-family="MonumentExtended-Regular, Monument" letter-spacing="0.05em"><tspan x="0" y="0">WALLET</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -2,7 +2,7 @@
   <v-container class="splash-page" fluid>
     <v-row class="text-center h-100" align="center">
       <v-col cols="12">
-        <img :src="'/image/logo.png'" class="logo" />
+        <img :src="'/image/logo.svg'" class="logo" />
       </v-col>
     </v-row>
   </v-container>
