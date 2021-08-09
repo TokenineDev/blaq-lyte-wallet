@@ -49,7 +49,7 @@
                             {{ tokenByName.name }}
                           </v-row>
                           <v-row style="font-size: 10px" class="grey--text">
-                            1 {{ tokenByName.name }} = 10{{ o }} ฿
+                            1 {{ tokenByName.name }} = {{ bathRate }} ฿
                           </v-row>
                         </v-col>
                       </v-row>
@@ -62,7 +62,7 @@
                       </v-row>
                       <v-row class="text-right" style="font-size: 10px">
                         <v-col class="ma-0 pa-0 pr-4 grey--text">
-                          = 13,000 ฿ {{ s }}
+                          = {{ bathRate * Number(parseUtillETHtoShow(tokenByName.balance)) }} ฿
                         </v-col>
                       </v-row>
                     </v-col>
@@ -251,6 +251,7 @@ export default {
       transferInstance: null,
       wsProvider: null,
       contract: null,
+      bathRate: 10,
     };
   },
   computed: {

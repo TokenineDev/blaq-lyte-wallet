@@ -60,7 +60,7 @@
             <v-text-field
               background-color="#c71e2b"
               dark
-              class="amount-input"
+              class="amount-input mr-1 ml-1 mb-5 pl-1 pr-3 pt-2 pb-2 rounded-lg font-weight-bold"
               hide-details
               type="number"
               outlined
@@ -345,6 +345,7 @@ export default {
 
   .amount-input {
     font-size: 21px;
+    text-align: right !important;
   }
 }
 </style>
