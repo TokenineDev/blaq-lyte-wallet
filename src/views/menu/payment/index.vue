@@ -1,13 +1,16 @@
 <template>
   <div class="payment-page">
-    <v-row no-gutters v-if="selected != null">
+    <div class="text-center mt-10">
+      Comming Soon..
+    </div>
+    <!-- <v-row no-gutters v-if="selected != null">
       <v-col cols="12" class="d-flex align-start">
         <span class="ml-2">
           <h2>ซื้อเหรียญ</h2>
         </span>
       </v-col>
-    </v-row>
-    <v-row no-gutters justify="center" class="px-3">
+    </v-row> -->
+    <!-- <v-row no-gutters justify="center" class="px-3">
       <v-col cols="12" xs="12" sm="8" md="6" lg="4">
         <v-row dense class="mt-3">
           <v-col cols="12">
@@ -182,7 +185,7 @@
           </div>
         </v-card>
       </v-col>
-    </v-row>
+    </v-row> -->
     <bottom-nav />
   </div>
 </template>

@@ -48,9 +48,9 @@
                           <v-row>
                             {{ tokenByName.name }}
                           </v-row>
-                          <v-row style="font-size: 10px" class="grey--text">
+                          <!-- <v-row style="font-size: 10px" class="grey--text">
                             1 {{ tokenByName.name }} = {{ bathRate }} ฿
-                          </v-row>
+                          </v-row> -->
                         </v-col>
                       </v-row>
                     </v-col>
@@ -60,11 +60,11 @@
                           {{ parseUtillETHtoShow(tokenByName.balance) }}
                         </v-col>
                       </v-row>
-                      <v-row class="text-right" style="font-size: 10px">
+                      <!-- <v-row class="text-right" style="font-size: 10px">
                         <v-col class="ma-0 pa-0 pr-4 grey--text">
                           = {{ bathRate * Number(parseUtillETHtoShow(tokenByName.balance)) }} ฿
                         </v-col>
-                      </v-row>
+                      </v-row> -->
                     </v-col>
                   </v-row>
                 </v-toolbar>
