@@ -1,15 +1,22 @@
 <template>
   <div class="bar-me">
-    <v-app-bar class="mt-3" color="transparent" max-width="500px" flat height="64px">
+    <v-app-bar
+      class="mt-3"
+      color="transparent"
+      max-width="500px"
+      flat
+      height="64px"
+    >
       <v-img
         :src="require('/src/assets/wallet-icon.svg')"
-        height="2.5rem"
+        max-height="2.5rem"
+        min-height="0.25rem"
         contain
       ></v-img>
       <div class="address">
         <input
           type="text"
-          class="input-pvkey pa-4 pr-5"
+          class="input-pvkey md:pa-4 md:pr-5"
           ref="ethWallet"
           :value="ethereumAddress"
           @click="CopyEth"
@@ -18,8 +25,15 @@
       </div>
       <v-menu bottom offset-y>
         <template v-slot:activator="{ on, attrs }">
-          <v-avatar class="avatar" color="indigo" v-bind="attrs" v-on="on">
+          <v-avatar
+            class="avatar"
+            color="indigo"
+            size="38"
+            v-bind="attrs"
+            v-on="on"
+          >
             <v-img
+              class="w-1.5"
               :src="require('/src/assets/default-user-icon.svg')"
             ></v-img>
           </v-avatar>

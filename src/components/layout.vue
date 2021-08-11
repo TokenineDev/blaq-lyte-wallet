@@ -5,14 +5,31 @@
         <v-icon large color="#6F6F6F" @click="$emit('onBack')"
           >keyboard_arrow_left</v-icon
         >
-        <span class="ml-2">
-          <h2 v-html="header" class="grey--text text--darken-1"></h2>
+        <span class="ml-2 mt-2">
+          <h4 v-html="header" class="grey--text text--darken-1"></h4>
         </span>
         <v-spacer> </v-spacer>
-        <v-btn v-if="receive" rounded large @click="$emit('receive')" class="text-center white--text" color="black">
+        <v-btn
+          v-if="receive"
+          rounded
+          large
+          @click="$emit('receive')"
+          class="text-center white--text"
+          color="black"
+        >
           <v-row>
-            <v-col><div style="font-size:14px;" class="font-weight-bold">รับเหรียญ</div></v-col>
-            <v-col class="pa-0 pt-3 pb-3"><v-img src="../assets/buyicon.svg" width="23px" height="20px"></v-img></v-col>
+            <v-col
+              ><div style="font-size:14px;" class="font-weight-bold">
+                รับเหรียญ
+              </div></v-col
+            >
+            <v-col class="pa-0 pt-3 pb-3"
+              ><v-img
+                src="../assets/buyicon.svg"
+                width="23px"
+                height="20px"
+              ></v-img
+            ></v-col>
           </v-row>
         </v-btn>
       </v-col>
