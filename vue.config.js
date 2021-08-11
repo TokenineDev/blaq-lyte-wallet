@@ -1,10 +1,10 @@
 module.exports = {
   pwa: {
-    name: 'MPV',
-    themeColor: '#c71e2b',
+    name: 'BLAQ LYTE',
+    themeColor: '#000000',
     msTileColor: '#000000',
     appleMobileWebAppCapable: 'yes',
-    appleMobileWebAppStatusBarStyle: '#c71e2b',
+    appleMobileWebAppStatusBarStyle: '#000000',
     manifestOptions: {
       display: 'standalone'
     },
@@ -25,5 +25,8 @@ module.exports = {
   },
   transpileDependencies: [
     'vuetify'
-  ]
+  ],
+  publicPath: process.env.NODE_ENV === 'production'
+    ? '/blaq-lyte-wallet/'
+    : '/'
 }
