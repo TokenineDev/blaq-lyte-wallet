@@ -2,12 +2,11 @@
   <div class="transfer-page">
     <v-row class="pt-8">
       <v-col cols="12" class="pa-0 d-flex" align-self="center">
-          <v-img
-            src="../../../assets/wallet-icon.svg"
-            height="60px"
-            width="60px"
-            contain
-          ></v-img>
+        <v-img
+          src="../../../assets/wallet-icon.svg"
+          height="3.5rem"
+          contain
+        ></v-img>
       </v-col>
     </v-row>
     <layout
@@ -79,7 +78,7 @@
                       style="background-color: white"
                       class="mr-1 ml-1 mb-5 pl-1 pr-3 pt-2 pb-2 rounded-lg font-weight-bold custom-text-field"
                     >
-                      <v-col cols="10" class="pa-0 ma-0">
+                      <v-col cols="9" class="pa-0 ma-0">
                         <v-text-field
                           solo
                           flat
@@ -92,7 +91,7 @@
                         >
                         </v-text-field
                       ></v-col>
-                      <v-col cols="2" align-self="center" class="pa-0">
+                      <v-col cols="3" align-self="center" class="pa-0">
                         <v-btn text
                           ><v-img
                             src="../../../assets/qr-code-button-icon.svg"
@@ -106,7 +105,7 @@
                       style="background-color: white"
                       class="mr-1 ml-1 mb-5 pl-1 pr-3 pt-2 pb-2 rounded-lg font-weight-bold custom-text-field"
                     >
-                      <v-col cols="10" class="ma-0 pa-0">
+                      <v-col cols="9" class="ma-0 pa-0">
                         <v-text-field
                           type="number"
                           solo
@@ -128,8 +127,12 @@
                         >
                         </v-text-field>
                       </v-col>
-                      <v-col cols="2" class="ma-0 pa-0 grey--text" align-self="center">
-                        {{ tokenByName.name }}</v-col
+                      <v-col
+                        cols="3"
+                        class="ma-0 pa-0 grey--text"
+                        align-self="center"
+                      >
+                        {{ tokenByName.symbol }}</v-col
                       >
                     </v-row>
                     <v-row>
@@ -391,7 +394,7 @@ export default {
     }
     this.$nextTick(() => {
       const vm = this;
-      var init = function () {
+      var init = function() {
         vm.wsProvider = new vm.$ethers.providers.WebSocketProvider(
           "wss://ws.xchain.asia"
         );
@@ -490,21 +493,26 @@ function decrypt(message = "", key = "") {
 </script>
 
 <style lang="scss">
-  .transfer-page {
-    .box-detail {
-      box-shadow: 0px 0px 5px #CDE2F0 !important;
-      background: radial-gradient(at left 50%,rgba(254,254,254,1) 0%, rgba(233,240,245,1) 74%, rgba(226,235,242,1) 100%);
-    }
-    .box-detail-history {
-      box-shadow: 0px 0px 5px #CDE2F0 !important;
-    }
-    .custom-toolbar {
-      /* background-color: #fff !important; */
-      box-shadow: 0px 0px 5px #CDE2F0 !important;
-    }
-    .custom-text-field {
-      border-radius: 9px;
-      box-shadow: 0px 0px 5px #CDE2F0;
-    }
+.transfer-page {
+  .box-detail {
+    box-shadow: 0px 0px 5px #cde2f0 !important;
+    background: radial-gradient(
+      at left 50%,
+      rgba(254, 254, 254, 1) 0%,
+      rgba(233, 240, 245, 1) 74%,
+      rgba(226, 235, 242, 1) 100%
+    );
   }
+  .box-detail-history {
+    box-shadow: 0px 0px 5px #cde2f0 !important;
+  }
+  .custom-toolbar {
+    /* background-color: #fff !important; */
+    box-shadow: 0px 0px 5px #cde2f0 !important;
+  }
+  .custom-text-field {
+    border-radius: 9px;
+    box-shadow: 0px 0px 5px #cde2f0;
+  }
+}
 </style>

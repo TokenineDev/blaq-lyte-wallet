@@ -12,7 +12,6 @@
             <v-img
               :src="require('/src/assets/content.svg')"
               width="100%"
-              contain
             ></v-img>
           </div>
         </v-col>
